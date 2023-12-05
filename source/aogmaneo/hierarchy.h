@@ -97,7 +97,7 @@ public:
         Array<IO_Params> ios;
     };
 
-private:
+
     // layers
     Array<Encoder> encoders;
     Array<Array<Decoder>> decoders;
@@ -126,7 +126,7 @@ private:
         float importance
     ) {
         for (int t = 0; t < histories[0][i].size(); t++)
-            encoders[0].get_visible_layer(i * histories[0][i].size() + t).importance = importance;
+            encoders[0].visible_layers[i * histories[0][i].size() + t].importance = importance;
     }
 
 public:
@@ -195,9 +195,9 @@ public:
         int i
     ) const {
         if (io_types[i] == action)
-            return actors[d_indices[i]].get_hidden_cis();
+            return actors[d_indices[i]].hidden_cis;
 
-        return decoders[0][d_indices[i]].get_hidden_cis();
+        return decoders[0][d_indices[i]].hidden_cis;
     }
 
     // retrieve prediction activations
@@ -205,9 +205,9 @@ public:
         int i
     ) const {
         if (io_types[i] == action)
-            return actors[d_indices[i]].get_hidden_acts();
+            return actors[d_indices[i]].hidden_acts;
 
-        return decoders[0][d_indices[i]].get_hidden_acts();
+        return decoders[0][d_indices[i]].hidden_acts;
     }
 
     // whether this layer received on update this timestep
@@ -253,7 +253,7 @@ public:
     int get_num_encoder_visible_layers(
         int l
     ) const {
-        return encoders[l].get_num_visible_layers();
+        return encoders[l].visible_layers.size();
     }
 
     // retrieve a sparse coding layer
@@ -269,13 +269,7 @@ public:
     ) const {
         return encoders[l];
     }
-
-    int get_num_decoders(
-        int l
-    ) const {
-        return decoders[l].size();
-    }
-
+    
     // retrieve by index
     Decoder &get_decoder(
         int l,
@@ -307,20 +301,6 @@ public:
         int i
     ) const {
         return actors[d_indices[i]];
-    }
-
-    const Int_Buffer &get_i_indices() const {
-        return i_indices;
-    }
-
-    const Int_Buffer &get_d_indices() const {
-        return d_indices;
-    }
-
-    const Array<Circle_Buffer<Int_Buffer>> &get_histories(
-        int l
-    ) const {
-        return histories[l];
     }
 };
 }

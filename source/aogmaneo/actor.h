@@ -59,7 +59,7 @@ public:
         {}
     };
 
-private:
+
     Int3 hidden_size; // hidden/output/action size
 
     // current history size - fixed after initialization. determines length of wait before updating
@@ -134,47 +134,9 @@ public:
     void read_state(
         Stream_Reader &reader
     );
-
-    // get number of visible layers
-    int get_num_visible_layers() const {
-        return visible_layers.size();
-    }
-
-    // get a visible layer
-    const Visible_Layer &get_visible_layer(
-        int i // index of layer
-    ) const {
-        return visible_layers[i];
-    }
-
-    // get a visible layer descriptor
-    const Visible_Layer_Desc &get_visible_layer_desc(
-        int i // index of layer
-    ) const {
-        return visible_layer_descs[i];
-    }
-
-    // get hidden state/output/actions
-    const Int_Buffer &get_hidden_cis() const {
-        return hidden_cis;
-    }
-
-    // get hidden activations (probabilities) for actions
-    const Float_Buffer &get_hidden_acts() const {
-        return hidden_acts;
-    }
-
-    // get the hidden size
-    const Int3 &get_hidden_size() const {
-        return hidden_size;
-    }
-
+    
     int get_history_capacity() const {
         return history_samples.size();
-    }
-
-    int get_history_size() const {
-        return history_size;
     }
 };
 }

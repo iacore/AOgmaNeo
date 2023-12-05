@@ -11,7 +11,7 @@
 namespace aon {
 template<class T>
 class Ptr {
-private:
+
     T* p;
     
 public:

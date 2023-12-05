@@ -16,7 +16,7 @@ class Array_View;
 
 template<typename T>
 class Array {
-private:
+
     T* p;
     int s;
 
@@ -169,7 +169,7 @@ public:
 
 template<typename T>
 class Array_View {
-private:
+
     T* p;
     int s;
 

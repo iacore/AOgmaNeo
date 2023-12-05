@@ -53,7 +53,7 @@ public:
         {}
     };
 
-private:
+
     Int3 hidden_size; // size of hidden/output layer
 
     Int_Buffer hidden_cis; // hidden states
@@ -120,34 +120,5 @@ public:
     void read(
         Stream_Reader &reader
     );
-
-    // get the number of visible layers
-    int get_num_visible_layers() const {
-        return visible_layers.size();
-    }
-
-    // get a visible layer
-    const Visible_Layer &get_visible_layer(
-        int vli // index of visible layer
-    ) const {
-        return visible_layers[vli];
-    }
-
-    // get a visible layer descriptor
-    const Visible_Layer_Desc &get_visible_layer_desc(
-        int vli // index of visible layer
-    ) const {
-        return visible_layer_descs[vli];
-    }
-
-    // get the hidden states
-    const Int_Buffer &get_hidden_cis() const {
-        return hidden_cis;
-    }
-
-    // get the hidden size
-    const Int3 &get_hidden_size() const {
-        return hidden_size;
-    }
 };
 }
