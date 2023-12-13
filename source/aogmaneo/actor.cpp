@@ -393,6 +393,7 @@ void Actor::step(
         history_size++;
     
     // add new sample
+    // note: is like .clone() in Rust
     {
         History_Sample &s = history_samples[0];
 
