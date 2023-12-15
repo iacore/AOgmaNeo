@@ -263,9 +263,13 @@ void Hierarchy::clear_state() {
             for (int t = 0; t < histories[l][i].size(); t++)
                 histories[l][i][t].fill(0);
         }
+    }
 
+    for (int l = 0; l < encoders.size(); l++) {
         encoders[l].clear_state();
+    }
         
+    for (int l = 0; l < encoders.size(); l++) {
         // decoders
         for (int d = 0; d < decoders[l].size(); d++)
             decoders[l][d].clear_state();
