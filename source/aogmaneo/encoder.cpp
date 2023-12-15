@@ -102,10 +102,10 @@ void Encoder::update_gates(
 
     int hidden_cell_index_max = hidden_cis[hidden_column_index] + hidden_cells_start;
 
+    const float byte_inv = 1.0f / 255.0f;
+
     float sum = 0.0f;
     int count = 0;
-
-    const float byte_inv = 1.0f / 255.0f;
 
     for (int vli = 0; vli < visible_layers.size(); vli++) {
         Visible_Layer &vl = visible_layers[vli];
