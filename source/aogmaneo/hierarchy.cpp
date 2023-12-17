@@ -205,7 +205,7 @@ void Hierarchy::step(
             // updated
             updates[l] = true;
 
-            Array<Int_Buffer_View> layer_input_cis(decoders[l].size());
+            Array<Int_Buffer_View> layer_input_cis(encoders[l].visible_layers.size());
 
             int index = 0;
 
