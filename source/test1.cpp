@@ -1,7 +1,6 @@
-
-#include "aogmaneo/array.h"
-#include "aogmaneo/helpers.h"
-#include "aogmaneo/hierarchy.h"
+#include <aogmaneo/array.h>
+#include <aogmaneo/helpers.h>
+#include <aogmaneo/hierarchy.h>
 #include <cstring>
 int main() {
   using namespace aon;
@@ -23,8 +22,8 @@ int main() {
       obs_a,
       predictions,
   };
-  const Array<Int_Buffer_View> obs_aa(2);
-  std::memcpy(obs_aa.p, input_cis, 2);
+  Array<Int_Buffer_View> obs_aa(2);
+  std::memcpy(&obs_aa[0], input_cis, sizeof(input_cis));
   hier.step(obs_aa);
 
   return 0;
