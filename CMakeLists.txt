@@ -49,6 +49,10 @@ set_target_properties(AOgmaNeo PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 
 target_link_libraries(AOgmaNeo ${OpenMP_CXX_LIBRARIES})
 
+add_executable(test1 "${SOURCE_PATH}/test1.cpp")
+
+target_link_libraries(test1 AOgmaNeo)
+
 install(TARGETS AOgmaNeo
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
